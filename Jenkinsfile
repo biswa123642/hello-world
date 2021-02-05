@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("clone code"){
             steps{
-               git credentialsId: 'git_credentials', url: 'https://github.com/ravdy/hello-world.git'
+               git credentialsId: 'git_credentials', url: 'https://github.com/biswa123642/hello-world.git'
             }
         }
         stage("build code"){
@@ -17,7 +17,7 @@ pipeline {
         stage("deploy"){
             steps{
               sshagent(['deploy_user']) {
-                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.229.183.126:/opt/apache-tomcat-8.5.55/webapps"
+                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@3.239.96.124:/opt/apache-tomcat-8.5.55/webapps"
                  
                 }
             }
